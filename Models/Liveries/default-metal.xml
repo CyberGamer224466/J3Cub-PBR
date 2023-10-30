@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+    <sim>
+        <model>
+
+            <livery>
+                <name type="string">Defaul-Metal</name>
+                <index type="int">9</index>
+                <texture>Liveries/default-texture.dds</texture>
+            </livery>
+
+            <liveryfloat>
+                <name type="string">Default-Metal</name>
+                <index type="int">9</index>
+                <texture>Liveries/metal-floats.png</texture>
+            </liveryfloat>
+
+            <j3cub>
+                <immat>true</immat>
+            </j3cub>
+
+        </model>
+    </sim>
+</PropertyList>

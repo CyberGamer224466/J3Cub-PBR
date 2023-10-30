@@ -1,0 +1,146 @@
+<?xml version="1.0"?>
+
+<!--
+  J3Cub engine effects originated from 
+
+  c172p damage effects for JSBSim.
+
+    Copyright (c) 2015 Gilberto Agostinho
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+-->
+
+<system name="engine">
+
+    <!--channel name="oil">
+    
+        <fcs_function name="consumed-oil-weight">
+            <function>
+                <product>
+                    <property>/engines/active-engine/oil-lacking</property>
+                    <value>1.7686</value>
+                    <value>-1</value>
+                </product>
+            </function>
+            <output>/fdm/jsbsim/inertia/pointmass-weight-lbs[16]</output>
+        </fcs_function>
+        
+    </channel-->
+    
+    <channel name="carburetor">
+    
+        <fcs_function name="Carb heat on causes RPM drop on 65 HP engine">
+            <function>
+                <ifthen>
+                    <property>/controls/anti-ice/engine[0]/carb-heat</property>
+                    <value>0.475</value>
+                    <value>0.15185</value>
+                </ifthen>
+            </function>
+            <output>/fdm/jsbsim/propulsion/engine[0]/air-intake-impedance-factor</output>
+        </fcs_function>
+        
+        <fcs_function name="Carb heat on causes RPM drop on 90 HP engine">
+            <function>
+                <ifthen>
+                    <property>/controls/anti-ice/engine[1]/carb-heat</property>
+                    <value>0.475</value>
+                    <value>0.15185</value>
+                </ifthen>
+            </function>
+            <output>/fdm/jsbsim/propulsion/engine[1]/air-intake-impedance-factor</output>
+        </fcs_function>
+
+        <fcs_function name="Carb heat on causes RPM drop on 150 HP engine">
+            <function>
+                <ifthen>
+                    <property>/controls/anti-ice/engine[2]/carb-heat</property>
+                    <value>0.475</value>
+                    <value>0.15185</value>
+                </ifthen>
+            </function>
+            <output>/fdm/jsbsim/propulsion/engine[2]/air-intake-impedance-factor</output>
+        </fcs_function>
+
+        <fcs_function name="auto-engine-mixture">
+            <function> <!-- Mixture rich above 3000 feet, LEAN to obtain maximum RPM -->
+                <sum>
+                    <value>0</value>
+                    <table>
+                        <independentVar>/position/altitude-ft</independentVar>
+                        <tableData>
+                            3000    1.00
+                            13000   0.75
+                        </tableData>
+                    </table>
+                </sum>
+            </function>
+            <output>engine/auto-mixture</output>
+        </fcs_function>
+
+    </channel>
+
+    <channel name="fueltanks">
+
+        <switch name="tank0-selected">
+            <output>/consumables/fuel/tank[1]/selected</output>
+            <default value="1"/>
+
+            <!-- Not selected -->
+            <test logic="AND" value="0">
+                /consumables/fuel/tanks/selected EQ 0
+            </test>
+            <test logic="AND" value="0">
+                /consumables/fuel/tanks/selected EQ 3
+            </test>
+        </switch>
+
+        <switch name="tank1-selected">
+            <output>/consumables/fuel/tank[2]/selected</output>
+            <default value="1"/>
+
+            <!-- Not selected -->
+            <test logic="AND" value="0">
+                /consumables/fuel/tanks/selected EQ 0
+            </test>
+            <test logic="AND" value="0">
+                /consumables/fuel/tanks/selected EQ 1
+            </test>
+        </switch>
+
+    </channel>
+
+	<!--channel name="damage">
+
+	    <switch name="engine/engine-0-cooling-factor">
+            <default value=".514"/>
+            <test  logic="AND" value="/engines/active-engine/cooling-factor">
+                /controls/engines/active-engine eq 0
+            </test>
+            <output>/fdm/jsbsim/propulsion/engine[0]/cooling-factor</output>
+        </switch>
+
+        <switch name="engine/engine-1-cooling-factor">
+            <default value=".514"/>
+            <test  logic="AND" value="/engines/active-engine/cooling-factor">
+                /controls/engines/active-engine eq 1
+            </test>
+            <output>/fdm/jsbsim/propulsion/engine[1]/cooling-factor</output>
+        </switch>
+
+	</channel-->
+
+</system>

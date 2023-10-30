@@ -1,0 +1,1254 @@
+<?xml version="1.0"?>
+<!--
+************************************************************************
+Piper J-3 Cub simulation configuration. This files ties together all the components
+used by FGFS to represent the J-3 Cub. Components include the flight data
+model, instrument panel, and external 3D model.
+************************************************************************
+version 2.0  090410-->
+
+<PropertyList include="Aircraft/Generic/Human/Include/walker-include.xml">
+    <sim>
+        <author>Original: David Megginson (3D, FDM), Jim Wilson (Instruments), Don Lavelle (3D remodel, instrument mods, pilot mods, effects, livery). Current: Erik Hofman (JSBSim FDM), Anders Gidenstam (hydrodynamics), Gilberto Agostinho (livery), Wayne Bragg (3D, systems, utility and variants, effects), special thanks to the c172p team.</author>
+        <status>advanced production</status>
+        <aircraft-version>4.1</aircraft-version>
+        <minimum-fg-version>2020.3.0</minimum-fg-version>
+        <rating>
+            <FDM type="int">4</FDM>
+            <systems type="int">4</systems>
+            <model type="int">4</model>
+            <cockpit type="int">4</cockpit>
+        </rating>
+        <tags>
+            <tag>1930s</tag>
+            <tag>1940s</tag>
+            <tag>ga</tag>
+            <tag>tow</tag>
+            <tag>piper</tag>
+            <tag>stol</tag>
+            <tag>piston</tag>
+            <tag>single-engine</tag>
+            <tag>fixed-gear</tag>
+            <tag>amphibious</tag>
+            <tag>floats</tag>
+            <tag>high-wing</tag>
+            <tag>trainer</tag>
+            <tag>tail-dragger</tag>
+            <tag>single-engine</tag>
+            <tag>castering-wheel</tag>
+            <tag>fixed-pitch</tag>
+            <tag>propeller</tag>
+            <tag>bush-plane</tag>
+            <tag>tricycle</tag>
+            <tag>skis</tag>
+            <tag>cropduster</tag>
+            <tag>wildfire</tag>
+        </tags>
+        <flight-model archive="y">jsb</flight-model>
+        <aero archive="y">J3Cub</aero>
+        <fuel-fraction>0.8</fuel-fraction>
+
+        <sound>
+            <path>J3Cub-sound.xml</path>
+        </sound>
+
+        <model>
+            <path archive="y">Aircraft/J3Cub/Models/J3Cub.xml</path>
+
+            <!-- Default livery -->
+            <livery>
+                <name type="string">Default</name>
+            </livery>
+
+            <!-- The bushkit variants: default/35"/pontoons/amphibious/skis -->
+            <variant alias="/fdm/jsbsim/bushkit"/>
+
+            <doors-off type="bool">false</doors-off>
+
+            <occupants type="bool">true</occupants>
+            
+            <j3cub>
+                <!-- Event sounds -->
+                <sound>
+                    <click-thunder1 type="bool">false</click-thunder1>
+                    <click-thunder2 type="bool">false</click-thunder2>
+                    <click-thunder3 type="bool">false</click-thunder3>
+
+                    <!--Lightning distance from aircraft -->
+                    <lightning>
+                        <dist1 type="double">0.0</dist1>
+                        <dist2 type="double">0.0</dist2>
+                        <dist3 type="double">0.0</dist3>
+                    </lightning>
+                </sound>
+
+                <!-- Lighting used by model and ALS -->
+                <lighting>
+                    <taxi type="bool">false</taxi>
+                    <landing type="bool">false</landing>
+                    <amphibious type="bool">false</amphibious>
+                </lighting>
+
+                <!-- Damage type (0 = normal, 1 = broken, 2 = damaged) used by model -->
+                <damage>
+                    <left-wing type="int">0</left-wing>
+                    <right-wing type="int">0</right-wing>
+                </damage>
+
+                <tiedowns>
+                    <left>
+                        <pitch-deg type="double">0.0</pitch-deg>
+                        <heading-deg type="double">0.0</heading-deg>
+                        <length type="double">0.0</length>
+                        <ref-length type="double">0.0</ref-length>
+                        <x type="double">0.0</x>
+                        <y type="double">-4.0</y>
+                    </left>
+                    <right>
+                        <pitch-deg type="double">0.0</pitch-deg>
+                        <heading-deg type="double">0.0</heading-deg>
+                        <length type="double">0.0</length>
+                        <ref-length type="double">0.0</ref-length>
+                        <x type="double">0.0</x>
+                        <y type="double">4.0</y>
+                    </right>
+                    <tail>
+                        <pitch-deg type="double">0.0</pitch-deg>
+                        <heading-deg type="double">0.0</heading-deg>
+                        <length type="double">0.0</length>
+                        <ref-length type="double">0.0</ref-length>
+                        <x type="double">-4</x>
+                        <y type="double">0</y>
+                    </tail>
+                </tiedowns>
+
+                <securing>
+                    <!-- property that decides if chockes, pitot cover and tiedowns are allowed or not -->
+                    <!-- no GUI choice anymore, could be used if you need overall control of allowing securing aircraft -->
+                    <allow-securing-aircraft type="bool">true</allow-securing-aircraft>
+                    
+                    <!-- RBF: pitot cover "remove before flight" -->
+                    <pitot-cover-visible type="bool">false</pitot-cover-visible>
+                    
+                    <!-- chocks used to secure the front gear -->
+                    <chock type="bool">false</chock>
+                    
+                    <!-- tiedowns attached to the wings used to secure plane -->
+                    <tiedownL type="bool">false</tiedownL>
+                    <tiedownR type="bool">false</tiedownR>
+                    <tiedownT type="bool">false</tiedownT>
+                    <tiedownL-visible type="bool">false</tiedownL-visible>
+                    <tiedownR-visible type="bool">false</tiedownR-visible>
+                    <tiedownT-visible type="bool">false</tiedownT-visible>
+                    
+                    <!-- Parking brakes -->
+                    <brake-parking type="bool">true</brake-parking>
+                </securing>
+
+                <enable-fog-frost type="bool">true</enable-fog-frost>
+
+                <tailgear type="bool">1</tailgear>
+                <aerotowhitch type="bool">0</aerotowhitch>
+
+                <!--clUP type="string"></clUP>
+                <clDN type="string"></clDN>
+                <clPosUp type="string"></clPosUp>
+                <clPosDown type="string"></clPosDown>
+                <clGear type="string"></clGear>
+                <clMix type="string"></clMix-->
+
+                <preload-resources type="bool">false</preload-resources>
+
+                <brake-parking type="double">1</brake-parking>
+
+                <ladder_position_l type ="int">1</ladder_position_l>
+            </j3cub>
+
+            <!-- An exit for the walker -->
+            <map>
+                <default_exit>
+                    <x-offset-m type="float">-0.35</x-offset-m>
+                    <y-offset-m type="float">-0.84</y-offset-m>
+                </default_exit>
+            </map>
+
+            <preload type="bool">false</preload>
+            <payload type="bool">false</payload>
+            <payload-package type="int">0</payload-package>
+            
+            <riflecase type="bool">false</riflecase>
+            <airtemp type="bool">false</airtemp>
+
+            <pa-18>
+                <hydraulics>
+                    <hydraulic-pump type="bool">false</hydraulic-pump>
+                </hydraulics>
+                <lighting>
+                    <instrument-proc type="float">0.3</instrument-proc>
+                </lighting>
+                <lightmap>
+                    <panel>
+                        <factor type="double">0.0</factor>
+                    </panel>
+                    <dome>
+                        <factor type="double">0.0</factor>
+                    </dome>
+                </lightmap>
+                <variable-prop type="bool">false</variable-prop>
+                <glass-side type="bool">false</glass-side>
+                <slats type="bool">false</slats>
+            </pa-18>
+
+            <autopilot type="bool">false</autopilot>
+
+            <icing>
+                <iceable>
+                    <name>Wing</name>
+                    <sensitivity type="double">1.0</sensitivity>
+                    <output-property>/fdm/jsbsim/ice/wing</output-property>
+                </iceable>
+                <iceable>
+                    <name>Stabilizer</name>
+                    <sensitivity type="double">1.0</sensitivity>
+                    <output-property>/fdm/jsbsim/ice/stabilizer</output-property>
+                </iceable>
+                <iceable>
+                    <name>Elevator</name>
+                    <sensitivity type="double">1.0</sensitivity>
+                    <output-property>/fdm/jsbsim/ice/elevator</output-property>
+                </iceable>
+                <iceable>
+                    <name>Propeller</name>
+                    <sensitivity type="double">0.5</sensitivity>
+                    <output-property>/fdm/jsbsim/ice/propeller</output-property>
+                </iceable>
+                <iceable>
+                    <name>Windshield</name>
+                    <sensitivity type="double">0.5</sensitivity>
+                    <output-property>/fdm/jsbsim/ice/windshield</output-property>
+                    <!-- output-property used for weight -->
+                </iceable>
+                <iceable>
+                    <name>Fuselage</name>
+                    <sensitivity type="double">0.3</sensitivity>
+                    <output-property>/fdm/jsbsim/ice/fuselage</output-property>
+                </iceable>
+                <iceable>
+                    <name>Pitot tube</name>
+                    <sensitivity type="double">1</sensitivity>
+                    <salvage-control>/systems/pitot/salvage</salvage-control>
+                    <output-property>/systems/pitot/icing</output-property>
+                </iceable>
+                <iceable>
+                    <name>Static</name>
+                    <sensitivity type="double">0.3</sensitivity>
+                    <output-property>/systems/static[0]/icing</output-property>
+                </iceable>
+            </icing>
+			<ramp n="1">
+				<x-m type="float">-15.9664</x-m>
+				<class type="string">2</class>
+			</ramp>
+        </model>
+
+        <submodels>
+            <serviceable type="bool">true</serviceable>
+            <path>Models/retardant_drop-submodel.xml</path>
+        </submodels>
+
+        <!-- Walker settings -->
+        <walker>
+            <gender>1</gender>
+            <altitude-ft>-5.0</altitude-ft>
+        </walker>
+
+        <!-- persistent properties -->
+        <aircraft-data>
+            <path>/sim/model/occupants</path>
+            <path>/sim/model/j3cub/securing/allow-securing-aircraft</path>
+            <path>/sim/model/j3cub/securing/pitot-cover-visible</path>
+            <path>/sim/model/j3cub/securing/chock</path>
+            <path>/sim/model/j3cub/securing/tiedownL</path>
+            <path>/sim/model/j3cub/securing/tiedownR</path>
+            <path>/sim/model/j3cub/securing/tiedownT</path>
+            <path>/sim/model/j3cub/securing/brake-parking</path>
+            <path>/sim/model/j3cub/garmin196-visible</path>
+            <path>/sim/model/j3cub/garmin196-position</path>
+            <path>/sim/model/j3cub/preload-resources</path>
+            <path>/environment/aircraft-effects/dirt</path>
+            <path>/fdm/jsbsim/running</path>
+            <path>/fdm/jsbsim/settings/damage</path>
+            <path>/engines/active-engine/carb_icing_allowed</path>
+            <path>/sim/model/j3cub/enable-fog-frost</path>
+            <path>/environment/aircraft-effects/cabin-heat-set</path>
+            <path>/consumables/fuel/tanks/selected</path>
+            <path>/sim/model/j3cub/brake-parking</path>
+            <path>/controls/mooring/automatic</path>
+            <path>/sim/model/immat</path>
+            <path>/sim/model/j3cub/airtemp</path>
+            <path>/sim/model/j3cub/autopilot</path>
+            <path>/it-stec55x/input/hdg</path>
+            <path>/sim/model/pa-18/variable-prop</path>
+            <path>/sim/current-view/user/x-offset-m</path>
+            <path>/sim/current-view/user/y-offset-m</path>
+            <path>/sim/current-view/user/z-offset-m</path>
+            <path>/sim/current-view/user/pitch-offset-deg</path>
+            <path>/sim/current-view/user/default-field-of-view-deg</path>
+            <path>/sim/aircraft-version</path>
+            <path>/sim/model/pa-18/glass-side</path>
+            <path>/sim/model/pa-18/slats</path>
+        </aircraft-data>
+
+        <current-view>
+            <z-offset-dec-step type="double">0.0</z-offset-dec-step>
+            <z-offset-inc-step type="double">0.0</z-offset-inc-step>
+            <can-change-z-offset type="bool">false</can-change-z-offset>
+            <z-offset-min-m type="float">5.0</z-offset-min-m>
+            <z-offset-max-m type="float">150.0</z-offset-max-m>
+        </current-view>
+
+        <startup>
+            <season-winter type="bool">false</season-winter>
+        </startup>
+
+        <systems>
+            <path>Systems/systems.xml</path>
+
+            <autopilot>
+                <path>Systems/glass-effects.xml</path>
+            </autopilot>
+
+            <autopilot>
+                <name>Gear AGL FT</name>
+                <path>Systems/equipment.xml</path>
+            </autopilot>
+
+            <!-- FDM level updates  -->
+
+            <property-rule n="100">
+                <name>FiltersOnly</name>
+                <path>Systems/instruments.xml</path>
+            </property-rule>
+
+            <property-rule n="101">
+                <path>Systems/ground-effects.xml</path>
+            </property-rule>
+
+            <property-rule n="102">
+                <path>Systems/als-lights.xml</path>
+            </property-rule>
+
+            <property-rule n="104">
+                <path>Systems/damage.xml</path>
+            </property-rule>
+
+            <property-rule n="105">
+                <path>Systems/pax.xml</path>
+            </property-rule>
+
+            <property-rule n="107">
+                <path>Systems/sounds.xml</path>
+            </property-rule>
+            
+            <property-rule n="108">
+                <path>Systems/engine.xml</path>
+            </property-rule>
+
+            <property-rule n="109">
+                <path>Systems/electrical.xml</path>
+            </property-rule>
+
+            <property-rule n="110">
+                <path>Aircraft/c172p/Systems/views.xml</path>
+            </property-rule>
+
+        </systems>
+
+        <help include="J3Cub-help.xml"/>
+        <tutorials include="Tutorials/j3cub-tutorials.xml"/>
+
+        <menubar include="Dialogs/J3Cub-menu.xml"/>
+
+        <multiplay>
+            <chat_display>1</chat_display>
+            <generic>
+                <float n="0" alias="/sim/model/door-positions/rightDoor/position-norm"/>
+                <float n="1" alias="/sim/model/door-positions/rightWindow/position-norm"/>
+                <float n="2" alias="/fdm/jsbsim/ground/tail-ski-lite-ground-effect-speed-kt-actual"/>
+                <float n="3" alias="/fdm/jsbsim/ground/left-ski-lite-ground-effect-speed-kt-actual"/>
+                <float n="4" alias="/fdm/jsbsim/ground/right-ski-lite-ground-effect-speed-kt-actual"/>
+                <float n="5" alias="/controls/gear/water-rudder-down-actual"/>
+                <float n="6" alias="/fdm/jsbsim/hydro/spray-wake-speed-kt-actual"/>
+                <float n="7" alias="/fdm/jsbsim/hydro/left-ground-effect-speed-kt-actual"/>
+                <float n="8" alias="/fdm/jsbsim/hydro/right-ground-effect-speed-kt-actual"/>
+                <float n="9" alias="/fdm/jsbsim/ground/nose-ground-effect-speed-kt-actual"/>
+                <float n="10" alias="/fdm/jsbsim/ground/left-wing-ground-effect-speed-kt-actual"/>
+                <float n="11" alias="/fdm/jsbsim/ground/right-wing-ground-effect-speed-kt-actual"/>
+                <float n="12" alias="/fdm/jsbsim/ground/tail-gear-ground-effect-speed-kt-actual"/>
+                <float n="13" alias="/fdm/jsbsim/ground/left-gear-ground-effect-speed-kt-actual"/>
+                <float n="14" alias="/fdm/jsbsim/ground/right-gear-ground-effect-speed-kt-actual"/>
+                <float n="15" alias="/fdm/jsbsim/ground/tail-tyre-smoke-ground-effect-speed-kt-actual"/>
+                <float n="16" alias="/fdm/jsbsim/ground/left-tyre-smoke-ground-effect-speed-kt-actual"/>
+                <float n="17" alias="/fdm/jsbsim/ground/right-tyre-smoke-ground-effect-speed-kt-actual"/>
+                <float n="18" alias="/sim/model/drums/rotate/position-norm"/>
+                <float n="19" alias="/fdm/jsbsim/ground/nose-tyre-smoke-ground-effect-speed-kt-actual"/>
+
+                <int n="0" alias="/fdm/jsbsim/gear/unit[29]/broken"/>
+                <int n="1" alias="/sim/model/pa-18/lighting/beacon/enabled"/>
+                <int n="2" alias="/sim/model/pa-18/lighting/strobes/enabled"/>
+                <int n="3" alias="/engines/active-engine/crashed"/>
+                <int n="4" alias="/sim/model/pa-18/lighting/taxi"/>
+                <int n="5" alias="/sim/model/pa-18/lighting/landing"/>
+                <int n="6" alias="/fdm/jsbsim/gear/unit[0]/broken"/>
+                <int n="7" alias="/fdm/jsbsim/gear/unit[1]/broken"/>
+                <int n="8" alias="/fdm/jsbsim/gear/unit[2]/broken"/>
+                <int n="9" alias="/sim/model/pa-18/lighting/nav-lights"/>
+                <int n="10" alias="/fdm/jsbsim/pontoon-damage/left-pontoon"/>
+                <int n="11" alias="/fdm/jsbsim/pontoon-damage/right-pontoon"/>
+                <int n="12" alias="/fdm/jsbsim/ski-damage/left-ski"/>
+                <int n="13" alias="/fdm/jsbsim/ski-damage/right-ski"/>
+                <int n="14" alias="/payload/pax-state"/>
+                <int n="15" alias="/fdm/jsbsim/crash"/>
+                <int n="16" alias="/fdm/jsbsim/payload/release-payload-drum-actual"/>
+                <int n="17" alias="/fdm/jsbsim/payload/release-payload-actual"/>
+                <int n="18" alias="/sim/model/j3cub/damage/left-wing"/>
+                <int n="19" alias="/sim/model/j3cub/damage/right-wing"/>
+
+                <!-- Registration number over MP -->
+                <string n="0" alias="/sim/model/immat"/>
+
+            </generic>
+        </multiplay>
+
+        <flight-recorder>
+            <replay-config type="int">0</replay-config>
+            <config n="0" include="Systems/flight-recorder/flight-recorder.xml">
+                <name type="string">J3Cub Flight Recorder</name>
+            </config>
+        </flight-recorder>
+
+        <instrumentation>
+            <path>Systems/instrumentation.xml</path>          
+        </instrumentation>
+
+        <panel>
+          <visibility archive="n">false</visibility>
+        </panel>
+
+        <!-- Position the pilot viewpoint and angle -->
+        <view>
+            <internal type="bool" archive="y">true</internal>
+            <config>
+                <x-offset-m archive="y" type="double">-0.0 </x-offset-m><!--y-->
+                <y-offset-m archive="y" type="double">-0.2 </y-offset-m><!--z-->
+                <z-offset-m archive="y" type="double"> 0.98 </z-offset-m><!--x-->
+                <pitch-offset-deg type="double">5</pitch-offset-deg>
+                <default-field-of-view-deg>88</default-field-of-view-deg>
+            </config>
+        </view>
+
+        <view n="100">
+            <name>Cockpit Front Seat View</name>
+            <type>lookfrom</type>
+            <internal type="bool">true</internal>
+            <config>
+                <from-model type="bool">true</from-model>
+                <from-model-idx type="int">0</from-model-idx>
+                <x-offset-m type="double">-0.0 </x-offset-m><!--y-->
+                <y-offset-m type="double">-0.25 </y-offset-m><!--z-->
+                <z-offset-m type="double"> 0.32 </z-offset-m><!--x-->
+                <pitch-offset-deg type="double">-4</pitch-offset-deg>
+                <default-field-of-view-deg>88</default-field-of-view-deg>
+                <limits>
+                    <enabled type="bool">true</enabled>
+                    <left>
+                        <heading-max-deg type="double">140</heading-max-deg>
+                        <x-offset-max-m type="double">0.15</x-offset-max-m>
+                        <x-offset-threshold-deg type="double">65</x-offset-threshold-deg>
+                    </left>
+                    <right>
+                        <heading-max-deg type="double">140</heading-max-deg>
+                        <x-offset-max-m type="double">0.15</x-offset-max-m>
+                        <x-offset-threshold-deg type="double">65</x-offset-threshold-deg>
+                    </right>
+                </limits>
+            </config>
+        </view>
+
+        <hitches>
+            <!-- make sure some properties do exist, when the list for multiplayer transfer is defined-->
+            <!-- they need to be in the same value, as they are initilized in the FDM, to get the same values after reset
+            should fix this somehow-->
+            <aerotow>
+                <!--tow>
+                    <brake-force type="float">6000</brake-force>
+                    <elastic-constant type="float">9000</elastic-constant>
+                </tow>
+                <rope>
+                    <rope-diameter-mm type="float">8</rope-diameter-mm>
+                </rope-->
+                <force_name_jsbsim type="string">aerotow</force_name_jsbsim>
+                <force-is-calculated-by-other type="bool">true</force-is-calculated-by-other>
+                <mp-auto-connect-period type="float">0.5</mp-auto-connect-period>
+                <!--local-pos-x type="float"> 5.125</local-pos-x>
+                <local-pos-y type="float"> 0.001</local-pos-y>
+                <local-pos-z type="float">-0.525</local-pos-z-->
+            </aerotow>
+        </hitches>
+
+        <state include="states/j3cub-approach-overlay.xml" n="0"/>
+        <state include="states/j3cub-parking-overlay.xml" n="1"/>
+        <state include="states/j3cub-tahoe-overlay.xml" n="2"/>
+        <state include="states/j3cub-hilltop-overlay.xml" n="3"/>
+        <state include="states/j3cub-glacier-overlay.xml" n="4"/>
+        <state include="states/j3cub-mountain-overlay.xml" n="5"/>
+
+    </sim>
+
+    <controls>
+        <gear>
+            <water-rudder type="bool">0</water-rudder>
+            <water-rudder-down type="double">0</water-rudder-down>
+            <gear-down-command type="bool">0</gear-down-command>
+        </gear>
+        <climate-control>
+            <cabin-heat-set type="double">0</cabin-heat-set>
+        </climate-control>    
+        <armament>
+            <trigger type ="int">0</trigger>
+        </armament>
+        <engines>
+            <engine n="0">
+                <primer type="double">0</primer>
+                <primer-lever type="bool">false</primer-lever>
+                <use-primer type="bool">false</use-primer>
+                <magnetos>0</magnetos>
+            </engine>
+            <engine n="1">
+                <magnetos>0</magnetos>
+            </engine>
+            <engine n="2">
+                <magnetos>0</magnetos>
+            </engine>
+            <current-engine>
+                <throttle type="double">0.0</throttle>
+                <mixture type="double">0</mixture>
+                <starter type="bool">false</starter>
+            </current-engine>
+        </engines>
+        <lighting>
+            <landing-light type="bool">false</landing-light>
+            <taxi-light type="bool">false</taxi-light>
+            <nav-lights type="bool">false</nav-lights>
+            <beacon-light type="bool">false</beacon-light>
+            <strobe-lights type="bool">false</strobe-lights>
+            <gearled type="bool">true</gearled>
+            <!--IT-STEC55X autopilot backlighting-->
+            <panel-norm type="float">0.0</panel-norm>
+            <radio-norm type="double">0.8</radio-norm>
+            <instruments-norm type="double">1</instruments-norm>
+            <gps-norm type="double">0</gps-norm>
+        </lighting>
+        <switches>
+            <starter type="bool">false</starter>
+            <magnetos type="int">0</magnetos>
+            <master-alt type="bool">true</master-alt>
+            <dome-light type="bool">false</dome-light>
+            <panel-lights type="bool">false</panel-lights>
+            <pitot-heat type="bool">false</pitot-heat>
+        </switches>
+        <flight>
+            <aileron-trim>0.0025</aileron-trim>   <!-- fixed -->
+            <elevator-trim>0.00</elevator-trim> <!-- controllable -->
+            <rudder-trim>0.075</rudder-trim>     <!-- fixed -->
+            <flaps>0</flaps>
+            <speedbrake alias="/engines/active-engine/rpm"/>
+            <!-- Roll and rain spray for tri gear front tire -->
+            <slats alias="/gear/gear[29]/rollspeed-ms"/>
+            <spoilers alias="/gear/gear[29]/sprayspeed-ms"/>
+            <gear-down alias="/gear/gear[29]/spray-density"/>
+            <deploy-slats type="bool">false</deploy-slats>
+        </flight>
+        <thermometer>
+            <temp-mode type="int">0</temp-mode>
+        </thermometer>
+        <mooring>
+            <automatic type="bool">false</automatic>
+            <anchor type="bool">false</anchor>
+            <go-to-mooring type="bool">false</go-to-mooring>
+            <port-available type="bool">false</port-available>
+        </mooring>
+        <door>1.0</door>
+        <aerotow>
+            <find-aircraft type="bool">false</find-aircraft>
+        </aerotow>
+    </controls>
+
+    <consumables>
+        <fuel>
+            <tank n="0">
+                <name>Fuel Tank</name>
+                <level-gal_us type="double">12</level-gal_us>
+                <selected type="bool">true</selected>
+            </tank>
+            <tank n="1">
+                <name>Left tank</name>
+                <level-gal_us type="double">18</level-gal_us>
+                <selected type="bool">true</selected>
+            </tank>
+            <tank n="2">
+                <name>Right tank</name>
+                <level-gal_us type="double">18</level-gal_us>
+                <selected type="bool">true</selected>
+            </tank>
+            <tank n="3">
+                <name>Collector tank</name>
+                <capacity unit="LBS">1.5</capacity>
+                <selected type="bool">true</selected>
+                <hidden type="bool">true</hidden>
+            </tank>
+            <tanks>
+                <selected type="int">0</selected>
+            </tanks>
+        </fuel>
+    </consumables>
+
+    <engines>
+        <engine n="0">
+            <rpm type="double">0</rpm>
+            <magnetos type="int">0</magnetos>
+            <mixture type="double">0</mixture>
+            <running type="bool">false</running>
+        </engine>
+        <engine n="1">
+            <rpm type="double">0</rpm>
+            <magnetos type="int">0</magnetos>
+            <mixture type="double">0</mixture>
+            <running type="bool">false</running>
+        </engine>
+        <engine n="2">
+            <rpm type="double">0</rpm>
+            <magnetos type="int">0</magnetos>
+            <mixture type="double">0</mixture>
+            <running type="bool">false</running>
+        </engine>
+
+        <active-engine>
+            <crash-engine type="bool">false</crash-engine>
+            <kill-engine type="bool">false</kill-engine>
+            <auto-start type="bool">false</auto-start>
+            <oil-final-temperature-degf type="double">60</oil-final-temperature-degf>
+            <oil-temperature-degf-indicated type="double">60</oil-temperature-degf-indicated>
+            <carb_ice type="double">0.0</carb_ice>
+            <carb_icing_rate type="double">0.0</carb_icing_rate>
+            <carb_icing_allowed type="bool">false</carb_icing_allowed>
+            <winter-kit-installed type="int">0</winter-kit-installed>
+        </active-engine>
+
+        <current-engine>
+            <starter type="bool">true</starter>
+        </current-engine>
+
+        <!--
+          Following properties are part of a static list of properties
+          that FlightGear transmits during multiplay. Because the number
+          of properties in /sim/multiplay/generic/ is quite limited and
+          the properties in /engines/ are unused, we can use them instead
+          to get FlightGear to transmit all the required properties.
+        -->
+
+        <!-- Amphibious front left -->
+        <engine n="3">
+            <n1 alias="/gear/gear[19]/compression-ft"/>
+            <n2 alias="/gear/gear[19]/position-norm"/>
+            <rpm alias="/gear/gear[19]/rollspeed-ms"/>
+        </engine>
+
+        <!-- Amphibious front right -->
+        <engine n="4">
+            <n1 alias="/gear/gear[20]/compression-ft"/>
+            <n2 alias="/gear/gear[20]/position-norm"/>
+            <rpm alias="/gear/gear[20]/rollspeed-ms"/>
+        </engine>
+
+        <!-- Amphibious rear left -->
+        <engine n="5">
+            <n1 alias="/gear/gear[21]/compression-ft"/>
+            <n2 alias="/gear/gear[21]/position-norm"/>
+            <rpm alias="/gear/gear[21]/rollspeed-ms"/>
+        </engine>
+
+        <!-- Amphibious rear right -->
+        <engine n="6">
+            <n1 alias="/gear/gear[22]/compression-ft"/>
+            <n2 alias="/gear/gear[22]/position-norm"/>
+            <rpm alias="/gear/gear[22]/rollspeed-ms"/>
+        </engine>
+
+        <!-- Rotation of default/35" tires -->
+        <engine n="7">
+            <rpm alias="/gear/gear[0]/rollspeed-ms"/>
+            <n1 alias="/gear/gear[1]/rollspeed-ms"/>
+            <n2 alias="/gear/gear[2]/rollspeed-ms"/>
+        </engine>
+
+        <!-- Rain spray for default/35" tires -->
+        <engine n="8">
+            <rpm alias="/gear/gear[0]/sprayspeed-ms"/>
+            <n1 alias="/gear/gear[1]/sprayspeed-ms"/>
+            <n2 alias="/gear/gear[2]/sprayspeed-ms"/>
+        </engine>
+        <engine n="9">
+            <rpm alias="/gear/gear[0]/spray-density"/>
+            <n1 alias="/gear/gear[1]/spray-density"/>
+            <n2 alias="/gear/gear[2]/spray-density"/>
+        </engine>
+    </engines>
+
+    <rotors>
+        <main>
+            <!-- Ski ( 23 = both nose wheels) and tiedown right -->
+            <blade n="0">
+                <position-deg alias="/gear/gear[23]/rollspeed-ms"/>
+                <flap-deg alias="/sim/model/j3cub/tiedowns/right/heading-deg"/>
+            </blade>
+            <!-- 23 and 24 = ski left and right -->
+            <blade n="1">
+                <position-deg alias="/gear/gear[24]/rollspeed-ms"/>
+                <flap-deg alias="/sim/model/j3cub/tiedowns/right/pitch-deg"/>
+            </blade>
+            <blade n="2">
+                <position-deg alias="/gear/gear[25]/rollspeed-ms"/>
+                <flap-deg alias="/sim/model/j3cub/tiedowns/right/length"/>
+            </blade>
+
+            <!-- Tiedown left -->
+            <blade n="3">
+                <position-deg alias="/sim/model/j3cub/tiedowns/left/heading-deg"/>
+                <flap-deg alias="/sim/model/j3cub/tiedowns/left/pitch-deg"/>
+            </blade>
+            <rpm alias="/sim/model/j3cub/tiedowns/left/length"/>
+        </main>
+
+        <!-- Tiedown tail -->
+        <tail>
+            <blade n="0">
+                <position-deg alias="/sim/model/j3cub/tiedowns/tail/heading-deg"/>
+            </blade>
+            <blade n="1">
+                <position-deg alias="/sim/model/j3cub/tiedowns/tail/pitch-deg"/>
+            </blade>
+            <rpm alias="/sim/model/j3cub/tiedowns/tail/length"/>
+        </tail>
+    </rotors>
+
+    <it-stec55x>
+        <input>
+            <ap-master-switch type="bool">0</ap-master-switch>
+        </input>
+        <settings>
+            <fd-equipped type="bool">0</fd-equipped> <!-- Does the aircraft have a flight director installed? -->
+            <gain-pitch type="double">1.0</gain-pitch> <!-- Modify the pitch axis gain -->
+            <gain-roll type="double">1.0</gain-roll> <!-- Modify the roll axis gain -->
+            <gain-yaw type="double">1.0</gain-yaw> <!-- Modify the yaw axis gain -->
+            <hsi-equipped-1 type="bool">1</hsi-equipped-1> <!-- Does the aircraft have an HSI or OBS for NAV1? -->
+            <hsi-equipped-2 type="bool">0</hsi-equipped-2> <!-- Does the aircraft have an HSI or OBS for NAV2? -->
+            <is-turboprop type="bool">0</is-turboprop> <!-- Does the aircraft have turboprop engines? -->
+            <use-controls-flight type="bool">1</use-controls-flight> <!-- Use generic /controls/flight for flight controls instead of custom properties -->
+            <yd-equipped type="bool">0</yd-equipped> <!-- Does the aircraft have the optional yaw damper installed? -->
+            <static-port-path type="string">/systems/static[2]/pressure-inhg-venturi</static-port-path> <!-- Path to the dedicated static port to use -->
+        </settings>
+    </it-stec55x>
+
+    <limits>
+
+        <!-- J3Cub from wiki and other sources
+        Never exceed speed: 106 kn (196 km/h, 122 mph)   
+        Maximum speed: 76 kn (87 mph, 140 km/h)
+        Cruise speed: 65 kn (75 mph, 121 km/h)
+        Range: 191 NM (220 mi, 354 km)
+        Service ceiling: 11,500 ft (3,500 m)
+        Rate of climb: 450 ft/min (2.3 m/s)
+        Wing loading: 6.84 lb/ft² (33.4 kg/m²)
+        Power/mass: 18.75 lb/hp (11.35 kg/kW)
+        -->
+
+        <!-- PA-18-150 landplane from wiki
+        Never exceed speed: 132 kn (246 km/h, 153 mph)
+        Maximum speed: 113 knots (208 km/h, 130 mph) at sea level
+        Cruise speed: 100 kn (185 km/h, 115 mph) (75% power)
+        Stall speed: 38 knots (69 km/h, 43 mph) flaps down
+        Range: 399 nmi (735 km, 460 mi)
+        Service ceiling: 19,000 ft (5,595 m)
+        -->
+
+        <!-- 65hp 
+        Horsepower: 65
+        Gross Weight: 1200 lbs
+        Top Speed: 76 kts
+        Empty Weight: 680 lbs
+        Cruise Speed: 65 kts
+        Fuel Capacity: 9.00 gal
+        Stall Speed (dirty): 33 kts
+        Range: 146 nm 
+        Takeoff
+            Ground Roll: 370 ft
+            Over 50 ft obstacle: 730 ft
+        Landing
+            Ground Roll 290 ft
+            Over 50 ft obstacle: 470 ft
+        Rate Of Climb: 450 fpm
+        Ceiling: 11500 ft
+        Lift Force
+            max 6.15
+            safe occasional 4.1
+            1200*4.1 = 4920
+        -->
+
+        <!-- 95hp 
+        Horsepower: 90
+        Gross Weight: 1500 lbs
+        Top Speed: 97 kts
+        Empty Weight: 800 lbs
+        Cruise Speed: 87 kts
+        Fuel Capacity: 18.00 gal
+        Stall Speed (dirty): 37 kts
+        Range: 230 nm
+        Takeoff
+            Ground Roll: 452 ft
+            Over 50 ft obstacle: 1150 ft
+        Landing
+            Ground Roll 385 ft
+            Over 50 ft obstacle: 800 ft
+        Rate Of Climb: 710 fpm
+        Ceiling: 15750 ft
+        Lift Force
+            max 6.15
+            safe occasional 4.1
+            1500*4.1 = 6150
+        -->
+
+        <!-- 150hp land
+        Horsepower: 150
+        Gross Weight: 1750 lbs
+        Top Speed: 113 kts
+        Empty Weight: 983 lbs
+        Cruise Speed: 100 kts
+        Fuel Capacity: 36.00 gal
+        Stall Speed (dirty): 37 kts
+        Range: 400 nm
+        Takeoff
+            Ground Roll: 200 ft
+            Over 50 ft obstacle: 500 ft
+        Landing
+            Ground Roll 350 ft
+            Over 50 ft obstacle: 885 ft
+        Rate Of Climb: 960 fpm
+        Ceiling: 19000 ft
+        Lift Force
+            max 6.15
+            safe occasional 4.1
+            1750*4.1 = 7175
+        -->
+
+        <!-- 150hp float
+        Horsepower: 150
+        Gross Weight: 1760 lbs
+        Top Speed: 100 kts
+        Empty Weight: 1190 lbs
+        Cruise Speed: 90 kts
+        Fuel Capacity: 36.00 gal
+        Stall Speed (dirty): 37 kts
+        Range: 365 nm
+        Takeoff
+            Ground Roll: 700 ft
+            Over 50 ft obstacle: 990 ft
+        Landing
+            Ground Roll 430 ft
+            Over 50 ft obstacle: 730 ft
+        Rate Of Climb: 830 fpm
+        Ceiling: 17500 ft
+        Lift Force
+            max 6.15
+            safe occasional 4.1
+            1760*4.1 = 7216
+        -->
+
+        <max-positive-g>3.5</max-positive-g>
+        <max-negative-g>-1.52</max-negative-g>
+
+        <max-lift-force-150hp>
+            <max-lift-force>7175</max-lift-force>
+        </max-lift-force-150hp>
+        <max-lift-force-95hp>
+            <max-lift-force>6150</max-lift-force>
+        </max-lift-force-95hp>
+        <max-lift-force-65hp>
+            <max-lift-force>4920</max-lift-force>
+        </max-lift-force-65hp>
+
+        <vne>106</vne>
+        <vne-j3cub>
+            <vne>106</vne>
+        </vne-j3cub>
+        <vne-pa18>
+            <vne>132</vne>
+        </vne-pa18>
+
+        <mass-and-balance-150hp>
+            <maximum-ramp-mass-lbs>1768</maximum-ramp-mass-lbs>
+            <maximum-takeoff-mass-lbs>1760</maximum-takeoff-mass-lbs>
+            <maximum-landing-mass-lbs>1760</maximum-landing-mass-lbs>
+        </mass-and-balance-150hp>
+
+        <mass-and-balance-95hp>
+            <maximum-ramp-mass-lbs>1507</maximum-ramp-mass-lbs>
+            <maximum-takeoff-mass-lbs>1500</maximum-takeoff-mass-lbs>
+            <maximum-landing-mass-lbs>1500</maximum-landing-mass-lbs>
+        </mass-and-balance-95hp>
+
+        <mass-and-balance-65hp>
+            <maximum-ramp-mass-lbs>1206</maximum-ramp-mass-lbs>
+            <maximum-takeoff-mass-lbs>1200 lbs</maximum-takeoff-mass-lbs>
+            <maximum-landing-mass-lbs>1200</maximum-landing-mass-lbs>
+        </mass-and-balance-65hp>
+
+         <!-- TODO: Define some nodes for the Fuel and Payload dialog.
+                     Aliasing is done later in Nasal/j3cub.nas. -->
+        <mass-and-balance>
+              
+            <maximum-ramp-mass-lbs/>
+            <maximum-takeoff-mass-lbs/>
+            <maximum-landing-mass-lbs/>
+
+            <!-- Allowable c.g. range: 
+            10.6" to 22.7" aft of the datum. 
+            or
+            If placard present and empty weight CG is between
+            8.5 and 20.3 inches aft of the datum,you need not compute CG. 
+
+            731 lbs 62.43
+            Total: 1219 lb 63.52
+            Approved: 1220 lb 56.6 to 68.7
+            No placard is required on this aircraft.
+
+            SC
+                95 hp 913 @ 17.9
+                160 hp 1085 @ 13.1
+                160 hp 1216 @ 13.8
+            -->
+
+            <cg>
+                <dimension type="string">in</dimension>
+                <limit>
+                    <entry>
+                        <position type="double">17.9</position>
+                        <mass-lbs type="double">913</mass-lbs>
+                    </entry>
+                    <entry>
+                        <position type="double">13.1</position>
+                        <mass-lbs type="double">1085</mass-lbs>
+                    </entry>
+                    <entry>
+                        <position type="double">13.8</position>
+                        <mass-lbs type="double">1216</mass-lbs>
+                    </entry>
+                </limit>
+            </cg>
+        </mass-and-balance>
+    </limits>
+
+    <nasal>
+        <logger>
+            <file>Nasal/generic/logger.nas</file>
+        </logger>
+        <math_ext>
+            <file>Nasal/generic/math_ext.nas</file>
+        </math_ext>
+        <updateloop>
+            <file>Aircraft/Generic/updateloop.nas</file>
+        </updateloop>
+        <failures>
+            <file>Aircraft/Generic/limits.nas</file>
+        </failures>
+        <js>
+            <file>Nasal/js.nas</file>
+        </js>
+        <j3cub>
+            <file>Nasal/tiedowns.nas</file>
+            <file>Nasal/liveries.nas</file>
+            <file>Nasal/doors.nas</file>
+            <file>Nasal/light.nas</file>
+            <file>Nasal/aircraft-dialog.nas</file>
+            <file>Nasal/flashlight.nas</file>
+            <file>Nasal/physics.nas</file>
+            <file>Nasal/j3cub.nas</file>
+            <file>Nasal/tiedowns.nas</file>
+            <file>Nasal/tanks.nas</file>
+            <file>Nasal/ki266.nas</file>
+            <file>Nasal/kx165a.nas</file>
+            <file>Nasal/engine.nas</file>
+            <file>Nasal/avionics.nas</file>
+            <file>Nasal/particle-effects-manager.nas</file>
+            <file>Nasal/immat.nas</file>
+            <file>Nasal/state-manager.nas</file>
+            <file>Nasal/save.nas</file>
+            <file>Nasal/terrain.nas</file>
+            <file>Nasal/views.nas</file>
+        </j3cub>
+        <icing>
+             <file>Nasal/icing.nas</file>
+             <file>Nasal/pitot-icing.nas</file>
+             <file>Nasal/static-icing.nas</file>
+        </icing>
+        <kr87>
+            <file>Nasal/kr87.nas</file>
+        </kr87>
+        <hydrodynamics>
+            <file>Nasal/jsbsim-hydrodynamics.nas</file>
+        </hydrodynamics>
+        <mooring>
+            <file>Nasal/mooring.nas</file>
+        </mooring>
+    </nasal>
+
+    <payload>
+        <weight>
+            <name type="string">Back seat</name>
+            <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[0]"/>
+            <arm-in alias="/fdm/jsbsim/inertia/pointmass-location-X-inches[0]"/>
+            <min-lb type="double">0.0</min-lb>
+            <max-lb type="double">300.0</max-lb>
+        </weight>  
+        <weight>
+            <name type="string">Front seat</name>
+            <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[1]"/>
+            <arm-in alias="/fdm/jsbsim/inertia/pointmass-location-X-inches[1]"/>
+            <min-lb type="double">0.0</min-lb>
+            <max-lb type="double">300.0</max-lb>
+        </weight>
+        <weight>
+            <name type="string">Rear Baggage</name>
+            <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[10]"/>
+            <arm-in alias="/fdm/jsbsim/inertia/pointmass-location-X-inches[10]"/>
+            <min-lb type="double">0.0</min-lb>
+            <max-lb type="double">150.0</max-lb>
+            <!-- WARNING: Max baggage "by the book" is 120lbs or less! -->
+        </weight>
+        <weight>
+            <name type="string">Hopper</name>
+            <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[15]"/>
+            <arm-in alias="/fdm/jsbsim/inertia/pointmass-location-X-inches[15]"/>
+            <min-lb type="double">0.0</min-lb>
+            <max-lb type="double">750.0</max-lb>
+        </weight>
+        <weight>
+            <name type="string">Engine 95hp</name><!-- based on 65hp at 173 lb -->
+            <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[16]"/>
+            <arm-in alias="/fdm/jsbsim/inertia/pointmass-location-X-inches[16]"/>
+            <min-lb type="double">0.0</min-lb>
+            <max-lb type="double">35</max-lb>
+        </weight>
+        <weight>
+            <name type="string">Engine 150hp</name><!-- based on dry weight of 244 lb -->
+            <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[17]"/>
+            <arm-in alias="/fdm/jsbsim/inertia/pointmass-location-X-inches[17]"/>
+            <min-lb type="double">0.0</min-lb>
+            <max-lb type="double">71</max-lb>
+        </weight>
+        <pax-state type="int">0</pax-state>
+    </payload>
+
+    <input>
+        <keyboard include="J3Cub-keyboard.xml"/>
+        <mice include="J3Cub-mice.xml"/>
+    </input>
+
+    <gear>
+        <gear n="0">
+            <tyre-smoke type="int">0</tyre-smoke>
+            <sprayspeed-ms type="double">0</sprayspeed-ms>
+            <spray-density type="double">0</spray-density>
+        </gear>
+        <gear n="1">
+            <tyre-smoke type="int">0</tyre-smoke>
+            <sprayspeed-ms type="double">0</sprayspeed-ms>
+            <spray-density type="double">0</spray-density>
+        </gear>
+        <gear n="2">
+            <tyre-smoke type="int">0</tyre-smoke>
+            <sprayspeed-ms type="double">0</sprayspeed-ms>
+            <spray-density type="double">0</spray-density>
+        </gear>
+        <gear n="29">
+            <tyre-smoke type="int">0</tyre-smoke>
+            <sprayspeed-ms type="double">0</sprayspeed-ms>
+            <spray-density type="double">0</spray-density>
+        </gear>
+    </gear>
+
+    <!-- gear 0, 1, 2 double for the snow skis -->
+    <fdm>
+        <jsbsim>
+            
+            <gear>
+                <unit n="0">
+                    <broken type="bool">0</broken>
+                </unit>
+                <unit n="1">
+                    <broken type="bool">0</broken>
+                </unit>
+                <unit n="2">
+                    <broken type="bool">0</broken>
+                </unit>
+                <unit n="19">
+                    <broken type="bool">0</broken>
+                </unit>
+                <unit n="20">
+                    <broken type="bool">0</broken>
+                </unit>
+                <unit n="21">
+                    <broken type="bool">0</broken>
+                </unit>
+                <unit n="22">
+                    <broken type="bool">0</broken>
+                </unit>
+            </gear>
+            <contact>
+                <unit n="4">
+                    <broken type="bool">0</broken>
+                </unit>
+                <unit n="5">
+                    <broken type="bool">0</broken>
+                </unit>
+            </contact>
+            <heat>
+                <env-temp-seed-degc type="double">0.0</env-temp-seed-degc>
+                <relative-humidity-seed type="double">0.0</relative-humidity-seed>
+            </heat>
+            <crash type="bool">false</crash>
+            <running type="bool">false</running>
+            <complex type="bool">true</complex>
+            <wing-damage>
+                <left-wing type="double">0.0</left-wing>
+                <right-wing type="double">0.0</right-wing>
+            </wing-damage>
+            <pontoon-damage>
+                <left-pontoon type="int">0</left-pontoon>
+                <right-pontoon type="int">0</right-pontoon>
+            </pontoon-damage>
+            <ski-damage>
+                <left-ski type="int">0</left-ski>
+                <right-ski type="int">0</right-ski>
+            </ski-damage>
+            <damage>
+                <repairing type="bool">false</repairing>
+                <traversing type="bool">false</traversing>
+            </damage>
+            <settings>
+                <damage type="bool">true</damage>
+                <damage-flag type="bool">false</damage-flag>
+            </settings>
+            <propulsion>
+                <prop>
+                    <blade-angle type="int">20</blade-angle>
+                </prop>
+                <!-- set blade-angle at 15 for 65hp engine -->
+                <engine n="0">
+                    <blade-angle type="int">15</blade-angle>
+                </engine>
+                <engine n="1">
+                    <blade-angle type="int">19</blade-angle>
+                </engine>
+                <engine n="2">
+                    <blade-angle type="int">20</blade-angle>
+                </engine>
+            </propulsion>
+        </jsbsim>
+    </fdm>
+
+    <instrumentation>
+        <attitude-indicator>
+            <config>
+                <tumble-flag archive="y" type="bool">true</tumble-flag>
+            </config>
+            <spin>1</spin>
+        </attitude-indicator>
+        <encoder>
+            <serviceable type="bool">true</serviceable>
+        </encoder>
+        <adf n="0">
+            <ident-audible type="bool">false</ident-audible>
+            <volume type="double">0.7</volume>
+            <frequencies>
+                <dial-1-khz type="int">0</dial-1-khz>
+                <dial-100-khz type="int">0</dial-100-khz>
+                <standby-khz type="double">200.0</standby-khz>
+                <selected-khz type="double">200.0</selected-khz>
+            </frequencies>
+        </adf>
+        <comm n="0">
+            <power-btn type="bool">1</power-btn>
+            <frequencies>
+                <dial-khz type="int">0</dial-khz>
+                <dial-mhz type="int">0</dial-mhz>
+            </frequencies>
+            <volume-selected type="double">0.7</volume-selected>
+            <channel-mode-selector type="bool">1</channel-mode-selector>
+            <volume type="double">0</volume>
+        </comm>
+        <nav n="0">
+            <volume type="double">0.7</volume>
+            <frequencies>
+                <dial-khz type="int">0</dial-khz>
+                <dial-mhz type="int">0</dial-mhz>
+            </frequencies>
+            <ident-audible type="bool">false</ident-audible>
+            <!-- fg1000 in fgdata uses this for the GMA1347 panel -->
+            <ident type="bool">false</ident>
+        </nav>
+        <marker-beacon>
+            <audio-btn type="double">0</audio-btn>
+        </marker-beacon>
+        <dme>
+            <ident type="double">0</ident>
+        </dme>
+        <magnetic-compass>
+            <pitch-offset-deg type="double">-2.7</pitch-offset-deg>
+        </magnetic-compass>
+    </instrumentation>
+
+    <systems>
+        <electrical>
+            <outputs>
+                <hydraulic-pump type="float">0.0</hydraulic-pump>
+                <gear-select type="float">0.0</gear-select>
+                <gear-advisory type="float">0.0</gear-advisory>
+                <pitot-heat type="float">0.0</pitot-heat>
+            </outputs>
+            <save-battery-charge type="bool">false</save-battery-charge>
+        </electrical>
+        <mooring>
+            <boat-id></boat-id>
+            <dialog></dialog>
+            <moorage-id></moorage-id>
+            <route include="Systems/mooring-pos.xml"/>
+            <state></state>
+        </mooring>
+    </systems>
+    <environment>
+        <aircraft-effects>
+            <dirt type="float">0</dirt>
+            <cabin-heat-set type="float">0</cabin-heat-set>
+            <frost-level-debug type="float">0</frost-level-debug>
+            <panel-glass-reflection-factor type="float">1.0</panel-glass-reflection-factor>
+            <cockpit-glass-reflection-factor type="float">.75</cockpit-glass-reflection-factor>
+        </aircraft-effects>
+        <surface>
+            <snow-thickness-multiplier type="float">200</snow-thickness-multiplier>
+        </surface>
+    </environment>
+    <position>
+        <altitude-agl-m type="float">0</altitude-agl-m>
+    </position>
+</PropertyList>

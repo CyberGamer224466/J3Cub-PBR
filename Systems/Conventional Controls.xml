@@ -1,0 +1,190 @@
+<?xml version="1.0"?>
+<system name="Conventional Controls">
+  <channel name="Pitch">
+   <summer name="Pitch Trim Sum">
+      <input>fcs/elevator-cmd-norm</input>
+      <input>fcs/pitch-trim-cmd-norm</input>
+      <clipto>
+        <min> -1 </min>
+        <max>  1 </max>
+      </clipto>
+   </summer>
+
+   <aerosurface_scale name="Elevator Control J3Cub">
+      <input>fcs/pitch-trim-sum</input>
+      <range>
+        <min> -0.51 </min>
+        <max>  0.34 </max>
+      </range>
+      <output>fcs/elevator-pos-rad-j3cub</output>
+   </aerosurface_scale>
+
+   <aerosurface_scale name="Elevator Control PA-18">
+      <input>fcs/pitch-trim-sum</input>
+      <range>
+        <min> -0.44 </min>
+        <max>  0.26 </max>
+      </range>
+      <output>fcs/elevator-pos-rad-pa18</output>
+   </aerosurface_scale>
+
+   <fcs_function name="fcs/elevator-pos-rad">
+      <function>
+          <sum>
+            <product>
+                <eq>
+                    <property>/sim/model/j3cub/pa-18</property>
+                    <value>0</value>
+                </eq>
+                <property>fcs/elevator-pos-rad-j3cub</property>
+            </product>
+            <product>
+                <eq>
+                    <property>/sim/model/j3cub/pa-18</property>
+                    <value>1</value>
+                </eq>
+                <property>fcs/elevator-pos-rad-pa18</property>
+            </product>
+          </sum>
+      </function>
+      <output>fcs/elevator-pos-rad</output>
+   </fcs_function>
+
+   <aerosurface_scale name="Elevator Normalization J3Cub">
+      <input>fcs/elevator-pos-rad-j3cub</input>
+      <domain>
+        <min> -0.51 </min>
+        <max>  0.34 </max>
+      </domain>
+      <range>
+        <min> -1 </min>
+        <max>  1 </max>
+      </range>
+      <output>fcs/elevator-pos-norm-j3cub</output>
+   </aerosurface_scale>
+
+   <aerosurface_scale name="Elevator Normalization PA-18">
+      <input>fcs/elevator-pos-rad-pa18</input>
+      <domain>
+        <min> -0.44 </min>
+        <max>  0.26 </max>
+      </domain>
+      <range>
+        <min> -1 </min>
+        <max>  1 </max>
+      </range>
+      <output>fcs/elevator-pos-norm-pa18</output>
+   </aerosurface_scale>
+
+   <fcs_function name="fcs/elevator-pos-norm">
+      <function>
+          <sum>
+            <product>
+                <eq>
+                    <property>/sim/model/j3cub/pa-18</property>
+                    <value>0</value>
+                </eq>
+                <property>fcs/elevator-pos-norm-j3cub</property>
+            </product>
+            <product>
+                <eq>
+                    <property>/sim/model/j3cub/pa-18</property>
+                    <value>1</value>
+                </eq>
+                <property>fcs/elevator-pos-norm-pa18</property>
+            </product>
+          </sum>
+      </function>
+      <output>fcs/elevator-pos-norm</output>
+   </fcs_function>
+  </channel>
+
+  <channel name="Roll">
+   <summer name="Roll Trim Sum">
+      <input>fcs/aileron-cmd-norm</input>
+      <input>fcs/roll-trim-cmd-norm</input>
+      <clipto>
+        <min> -1 </min>
+        <max>  1 </max>
+      </clipto>
+   </summer>
+
+   <aerosurface_scale name="Left Aileron Control">
+      <input>fcs/roll-trim-sum</input>
+      <range>
+        <min> -0.31 </min>
+        <max>  0.31 </max>
+      </range>
+      <output>fcs/left-aileron-pos-rad</output>
+   </aerosurface_scale>
+
+   <aerosurface_scale name="Right Aileron Control">
+      <input>-fcs/roll-trim-sum</input>
+      <range>
+        <min> -0.31 </min>
+        <max>  0.31 </max>
+      </range>
+      <output>fcs/right-aileron-pos-rad</output>
+   </aerosurface_scale>
+
+   <aerosurface_scale name="Left Aileron Normalization">
+      <input>fcs/left-aileron-pos-rad</input>
+      <domain>
+        <min> -0.31 </min>
+        <max>  0.31 </max>
+      </domain>
+      <range>
+        <min> -1 </min>
+        <max>  1 </max>
+      </range>
+      <output>fcs/left-aileron-pos-norm</output>
+   </aerosurface_scale>
+
+   <aerosurface_scale name="Right Aileron Normalization">
+      <input>fcs/right-aileron-pos-rad</input>
+      <domain>
+        <min> -0.31 </min>
+        <max>  0.31 </max>
+      </domain>
+      <range>
+        <min> -1 </min>
+        <max>  1 </max>
+      </range>
+      <output>fcs/right-aileron-pos-norm</output>
+   </aerosurface_scale>
+  </channel>
+
+  <channel name="Yaw">
+   <summer name="Rudder Command Sum">
+      <input>fcs/rudder-cmd-norm</input>
+      <input>fcs/yaw-trim-cmd-norm</input>
+      <clipto>
+        <min> -1 </min>
+        <max>  1 </max>
+      </clipto>
+   </summer>
+
+   <aerosurface_scale name="Rudder Control">
+      <input>fcs/rudder-command-sum</input>
+      <range>
+        <min> -0.52 </min>
+        <max>  0.52 </max>
+      </range>
+      <output>fcs/rudder-pos-rad</output>
+   </aerosurface_scale>
+
+   <aerosurface_scale name="Rudder Normalization">
+      <input>fcs/rudder-pos-rad</input>
+      <domain>
+        <min> -0.52 </min>
+        <max>  0.52 </max>
+      </domain>
+      <range>
+        <min> -1 </min>
+        <max>  1 </max>
+      </range>
+      <output>fcs/rudder-pos-norm</output>
+   </aerosurface_scale>
+  </channel>
+
+</system>
