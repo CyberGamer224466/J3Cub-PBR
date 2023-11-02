@@ -11,6 +11,9 @@ I am only credited for making the aircraft HDR/PBR compatible, I under no circum
 
 Beware that the aircraft is still in development stages and therefore there might be bugs and some thing that don't quite work. Also, this version only works on FlightGear 2020.4 with the HDR compositor turned on.
 
+IMPORTANT!!!
+Remove PBR and master from the folder name, in the end the folder's name should only contain the aircraft name.
+
 From here on is the original README file.
 
 ********************************************************************************
