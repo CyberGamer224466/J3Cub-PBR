@@ -3,17 +3,17 @@
     <name>exterior-glass-reflection</name>
     <inherits-from>Effects/model-pbr-transparent</inherits-from>
     <parameters>
-        <reflection-enabled type="int">1</reflection-enabled>
+        <!-- <reflection-enabled type="int">1</reflection-enabled>
         <reflection-correction type="float">0.5</reflection-correction>
         <reflect-map-enabled type="int">1</reflect-map-enabled>
         <reflection-fresnel type="float">0.6</reflection-fresnel>
         <reflection-rainbow type="float">0.5</reflection-rainbow>
         <reflection-noise type="float">0.3</reflection-noise>
         <reflection-dynamic type="int">1</reflection-dynamic>
-        <ambient-correction type="float">0.2</ambient-correction>
+        <ambient-correction type="float">0.2</ambient-correction> -->
 		<metallic-factor type="float">0.2</metallic-factor>
 		<roughness-factor type="float">0.01</roughness-factor>
-        <texture n= "5" >
+        <!-- <texture n= "5" >
             <type>cubemap</type>
             <images>
                 <positive-x>Aircraft/Generic/Effects/fgfs-sky2/1.png</positive-x>
@@ -29,6 +29,6 @@
         <render-bin>
             <bin-number>111</bin-number>
             <bin-name>DepthSortedBin</bin-name>
-        </render-bin>
+        </render-bin> -->
     </parameters>
 </PropertyList>
