@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PropertyList>
-  <name>Aircraft/J3Cub/Models/Effects/exterior/bumpspec</name>
+  <name>../J3Cub/Models/Effects/exterior/bumpspec</name>
   <inherits-from>Effects/model-pbr</inherits-from>
   <parameters>
     <normalmap-enabled type="int"> 1 </normalmap-enabled>

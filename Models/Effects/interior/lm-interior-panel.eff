@@ -2,10 +2,10 @@
 
 <PropertyList>
     <name>lm-interior-panel</name>
-    <inherits-from>Aircraft/J3Cub/Models/Effects/interior/j3cub-interior</inherits-from>
+    <inherits-from>../J3Cub/Models/Effects/interior/j3cub-interior</inherits-from>
     <parameters>
         <texture n="3">
-            <image>Aircraft/J3Cub/Models/Effects/interior/lm_panel.png</image>
+            <image>../J3Cub/Models/Effects/interior/lm_panel.png</image>
             <type>2d</type>
             <filter>linear-mipmap-linear</filter>
             <wrap-s>clamp</wrap-s>

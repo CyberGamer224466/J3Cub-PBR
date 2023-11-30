@@ -76,7 +76,7 @@
     </animation>
 
     <effect>
-        <inherits-from>Aircraft/J3Cub/Models/Effects/exterior/bumpspec-fuselage</inherits-from>
+        ../J3Cub/Models/Effects/exterior/bumpspec-fuselage</inherits-from>
         <object-name>wing_r_p18</object-name>
         <object-name>wing_l_p18</object-name>
         <object-name>flaps_p18</object-name>
@@ -135,13 +135,13 @@
     </effect>
 
     <effect>
-        <inherits-from>Aircraft/J3Cub/Models/Effects/interior/interior-glass-reflection-panel-front</inherits-from>
+        ../J3Cub/Models/Effects/interior/interior-glass-reflection-panel-front</inherits-from>
         <object-name>glass_p18</object-name>
     </effect>
 
     <!-- interior effects -->
     <effect>
-        <inherits-from>Aircraft/J3Cub/Models/Effects/interior/lm-interior</inherits-from>
+        ../J3Cub/Models/Effects/interior/lm-interior</inherits-from>
         <object-name>cabin_cable_l_p18</object-name>
         <object-name>cabin_cable_r_p18</object-name>
         <object-name>fuel_selector_base_p18</object-name>
@@ -171,7 +171,7 @@
     </effect>
 
     <effect>
-        <inherits-from>Aircraft/J3Cub/Models/Effects/interior/lm-parts</inherits-from>
+        ../J3Cub/Models/Effects/interior/lm-parts</inherits-from>
         <object-name>mixture_p18</object-name>
         <object-name>cabin_heat_p18</object-name>
         <object-name>cabin_def_p18</object-name>
@@ -180,18 +180,18 @@
         <object-name>AltStaticAir</object-name>
     </effect>
     <effect>
-        <inherits-from>Aircraft/J3Cub/Models/Effects/interior/lm-placard</inherits-from>
+        ../J3Cub/Models/Effects/interior/lm-placard</inherits-from>
         <object-name>primer_p18</object-name>
         <object-name>panel_screws_p18</object-name>
     </effect>
 
     <effect>
-        <inherits-from>Aircraft/J3Cub/Models/Effects/exterior/exterior-glass-reflection</inherits-from>
+        ../J3Cub/Models/Effects/exterior/exterior-glass-reflection</inherits-from>
         <object-name>fuselage_p18_glass</object-name>
     </effect>
 
     <effect>
-        <inherits-from>Aircraft/J3Cub/Models/Effects/interior/interior-glass-reflection-side</inherits-from>
+        ../J3Cub/Models/Effects/interior/interior-glass-reflection-side</inherits-from>
         <object-name>fuselage_interior_p18_glass</object-name>
     </effect>   
 

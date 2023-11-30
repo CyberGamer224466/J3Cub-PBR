@@ -13,7 +13,7 @@
 
 
      <effect>
-        <inherits-from>Aircraft/J3Cub/Models/Effects/exterior/bumpspec</inherits-from>
+        <inherits-from>../J3Cub/Models/Effects/exterior/bumpspec</inherits-from>
         <object-name>tyre_l_bush_rim</object-name>
         <object-name>tyre_r_bush_rim</object-name>
         <object-name>tail_wheel_bush_rim</object-name>
@@ -43,7 +43,7 @@
      </effect>
 
      <effect>
-      <inherits-from>Aircraft/J3Cub/Models/Effects/exterior/bumpspec-wheels</inherits-from>
+      <inherits-from>../J3Cub/Models/Effects/exterior/bumpspec-wheels</inherits-from>
       <object-name>tyre_l_bush</object-name>
       <object-name>tyre_r_bush</object-name>
       <object-name>tail_wheel_bush</object-name>

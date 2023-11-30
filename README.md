@@ -2,10 +2,10 @@ I edited the J3Cub for FlightGear by wlbragg to be compatible with HDR/PBR.
 
 Changes made:
 
-    Wheels
-    Tyres
-    Fuselage
-    Damage models
+- Wheels
+- Tyres
+- Fuselage
+- Damage models
 
 I am only credited for making the aircraft HDR/PBR compatible, I under no circumstances take credit or ownership over the models, FDM, sounds etc.
 
