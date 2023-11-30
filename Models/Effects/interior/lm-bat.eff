@@ -2,10 +2,10 @@
 
 <PropertyList>
     <name>lm-bat</name>
-    <inherits-from>../J3Cub/Models/Effects/interior/j3cub-interior</inherits-from>
+    <inherits-from>Aircraft/J3Cub/Models/Effects/interior/j3cub-interior</inherits-from>
     <parameters>
         <texture n="3">
-            <image>../J3Cub/Models/Effects/interior/lm_bat.png</image>
+            <image>Aircraft/J3Cub/Models/Effects/interior/lm_bat.png</image>
             <type>2d</type>
             <filter>linear-mipmap-linear</filter>
             <wrap-s>clamp</wrap-s>

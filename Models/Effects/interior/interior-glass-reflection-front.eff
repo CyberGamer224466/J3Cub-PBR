@@ -6,7 +6,7 @@
   <parameters>
 
    <texture n="2">
-	    <image>../J3Cub/Models/Effects/interior/windshield.png</image>
+	    <image>Aircraft/J3Cub/Models/Effects/interior/windshield.png</image>
 	    <type>2d</type>
 	    <filter>linear-mipmap-linear</filter>
 	    <wrap-s>clamp</wrap-s>

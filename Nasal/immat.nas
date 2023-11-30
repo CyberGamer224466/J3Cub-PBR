@@ -1,4 +1,4 @@
-io.include("../J3Cub/Nasal/registration_number.nas");
+io.include("Aircraft/J3Cub/Nasal/registration_number.nas");
 
 var refresh_immat = func {
     var immat = props.globals.getNode("/sim/model/immat",1).getValue();
@@ -6,7 +6,7 @@ var refresh_immat = func {
 };
 
 var immat_dialog = gui.Dialog.new("/sim/gui/dialogs/j3cub/status/dialog",
-                  "../J3Cub/Dialogs/immat.xml");
+                  "Aircraft/J3Cub/Dialogs/immat.xml");
 
 setlistener("sim/model/immat", refresh_immat, 1, 0);
 

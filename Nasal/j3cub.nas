@@ -560,16 +560,16 @@ var StaticModel = {
     }
 };
 
-StaticModel.new("coneR", "../J3Cub/Models/Exterior/safety-cone/coneR.ac");
-StaticModel.new("coneL", "../J3Cub/Models/Exterior/safety-cone/coneL.ac");
-StaticModel.new("gpu", "../J3Cub/Models/Exterior/external-power/external-power.xml");
-StaticModel.new("ladderL", "../J3Cub/Models/Exterior/ladder/ladderL.ac");
-StaticModel.new("ladderR", "../J3Cub/Models/Exterior/ladder/ladderR.ac");
-StaticModel.new("fueltanktrailer", "../J3Cub/Models/Exterior/fueltanktrailer/fueltanktrailer.ac");
-StaticModel.new("externalheater", "../J3Cub/Models/Exterior/external-heater/heater.xml");
+StaticModel.new("coneR", "Aircraft/J3Cub/Models/Exterior/safety-cone/coneR.ac");
+StaticModel.new("coneL", "Aircraft/J3Cub/Models/Exterior/safety-cone/coneL.ac");
+StaticModel.new("gpu", "Aircraft/J3Cub/Models/Exterior/external-power/external-power.xml");
+StaticModel.new("ladderL", "Aircraft/J3Cub/Models/Exterior/ladder/ladderL.ac");
+StaticModel.new("ladderR", "Aircraft/J3Cub/Models/Exterior/ladder/ladderR.ac");
+StaticModel.new("fueltanktrailer", "Aircraft/J3Cub/Models/Exterior/fueltanktrailer/fueltanktrailer.ac");
+StaticModel.new("externalheater", "Aircraft/J3Cub/Models/Exterior/external-heater/heater.xml");
 
 # Mooring anchor and rope
-StaticModel.new("anchorbuoy", "../J3Cub/Models/Effects/pontoon/mooring.xml");
+StaticModel.new("anchorbuoy", "Aircraft/J3Cub/Models/Effects/pontoon/mooring.xml");
 
 var prior_variant = getprop("/sim/model/j3cub/pa-18");
 ############################################

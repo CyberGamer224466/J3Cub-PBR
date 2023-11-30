@@ -25,10 +25,10 @@ version 2.0  090410-->
             </preview>
         </previews>
         <startup>
-            <splash-texture>../J3Cub/legacy/splash1.png</splash-texture>
-            <splash-texture>../J3Cub/legacy/splash8.png</splash-texture>
-            <splash-texture>../J3Cub/legacy/splash9.png</splash-texture>
-            <splash-texture>../J3Cub/legacy/splash10.png</splash-texture>
+            <splash-texture>Aircraft/J3Cub/legacy/splash1.png</splash-texture>
+            <splash-texture>Aircraft/J3Cub/legacy/splash8.png</splash-texture>
+            <splash-texture>Aircraft/J3Cub/legacy/splash9.png</splash-texture>
+            <splash-texture>Aircraft/J3Cub/legacy/splash10.png</splash-texture>
         </startup>
         <model>
             <j3cub>

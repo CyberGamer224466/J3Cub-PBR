@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PropertyList>
-  <name>../J3Cub/Models/Effects/exterior/bumpspec-fuselage</name>
-  <inherits-from>../J3Cub/Models/Effects/exterior/bumpspec</inherits-from>
+  <name>Aircraft/J3Cub/Models/Effects/exterior/bumpspec-fuselage</name>
+  <inherits-from>Aircraft/J3Cub/Models/Effects/exterior/bumpspec</inherits-from>
   <parameters>
     <texture n="1">
-        <image>../J3Cub/Models/Effects/exterior/normalmap.png</image>
+        <image>Aircraft/J3Cub/Models/Effects/exterior/normalmap.png</image>
         <type>2d</type>
         <filter>linear-mipmap-linear</filter>
         <wrap-s>repeat</wrap-s>
@@ -13,7 +13,7 @@
     </texture>
     <!-- ORM Texture (Occlusion R, Roughness G and Metallic B) -->
 	  <texture n="2">
-			<image>../J3Cub/Models/Effects/exterior/pbr/aluminium-orm.png</image>
+			<image>Aircraft/J3Cub/Models/Effects/exterior/pbr/aluminium-orm.png</image>
 			<type>2d</type>
 			<filter>linear-mipmap-linear</filter>
 			<wrap-s>clamp</wrap-s>
@@ -24,7 +24,7 @@
       <roughness-factor type="float">1.0</roughness-factor>
 
     <texture n="4">
-        <image>../J3Cub/Models/Effects/exterior/texture-ice.png</image>
+        <image>Aircraft/J3Cub/Models/Effects/exterior/texture-ice.png</image>
         <filter>linear-mipmap-linear</filter>
         <wrap-s>clamp</wrap-s>
         <wrap-t>clamp</wrap-t>

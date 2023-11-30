@@ -12,7 +12,7 @@
     </offsets>
 
     <effect>
-        <inherits-from>../J3Cub/Models/Effects/exterior/bumpspec-fuselage</inherits-from>
+        <inherits-from>Aircraft/J3Cub/Models/Effects/exterior/bumpspec-fuselage</inherits-from>
         <object-name>wheel_strut_rD</object-name>       
         <object-name>suspension_lower_rD</object-name>        
         <object-name>suspension_upper_rD</object-name>       
@@ -66,7 +66,7 @@
     </effect>
     
     <effect>
-      <inherits-from>../J3Cub/Models/Effects/exterior/bumpspec-wheels</inherits-from>
+      <inherits-from>Aircraft/J3Cub/Models/Effects/exterior/bumpspec-wheels</inherits-from>
       <object-name>tyre_rD</object-name>
       <object-name>tyre_r_bushD</object-name>
       <object-name>tyre_r_triD</object-name>
@@ -77,7 +77,7 @@
     </effect>
     
     <effect>
-        <inherits-from>../Effects/model-transparent</inherits-from>
+        <inherits-from>Effects/model-transparent</inherits-from>
         <object-name>propeller_slowD_p18</object-name>
         <object-name>propeller_fastD_p18</object-name>
     </effect>
