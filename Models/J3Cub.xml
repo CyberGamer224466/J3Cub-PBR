@@ -591,6 +591,8 @@
         <inherits-from>Aircraft/J3Cub/Models/Effects/exterior/bumpspec-wheels</inherits-from>
         <object-name>tyre_r</object-name>
         <object-name>tyre_l</object-name>
+        <object-name>tyre_rD</object-name>
+        <object-name>tyre_lD</object-name>
 		<object-name>tail_wheel</object-name>
     </effect>
 
@@ -598,6 +600,8 @@
         <inherits-from>Effects/model-transparent</inherits-from>
         <object-name>propeller_slow</object-name>
         <object-name>propeller_fast</object-name>
+        <object-name>propeller_fastD</object-name>
+        <object-name>propeller_slowD</object-name>
     </effect>
 
     <effect>
@@ -6595,6 +6599,8 @@
         <object-name>fuel_gauge_cap</object-name>
         <object-name>propeller_0</object-name>
         <object-name>propeller_1</object-name>
+        <object-name>propeller_0D</object-name>
+        <object-name>propeller_1D</object-name>
         <object-name>air_scoop_l</object-name>
         <object-name>air_scoop_r</object-name>
         <object-name>rudder</object-name>
@@ -6715,10 +6721,18 @@
         <object-name>tyre_rD_rim</object-name>       
         <!-- <object-name>tyre_r_bushD</object-name> -->
         <object-name>tyre_r_bushD_rim</object-name>          
-        <object-name>wheel_strut_lD</object-name>  
+        <object-name>wheel_strut_lD</object-name>
+        <object-name>wheel_strut_rD</object-name>         
         <object-name>wheel_strut_l_p18D</object-name>    
         <object-name>suspension_lower_lD</object-name>        
-        <object-name>suspension_upper_lD</object-name>       
+        <object-name>suspension_upper_lD</object-name> 
+        <object-name>wheel_strut_l_triD</object-name>
+        <object-name>wheel_strut_r_triD</object-name>   
+        <object>suspension_upper_l_triD</object>
+        <object>suspension_upper_r_triD</object>
+        <object>suspension_lower_l_triD</object>
+        <object>suspension_lower_r_triD</object>   
+      
         <object-name>axle_lD</object-name>
         <!-- <object-name>tyre_lD</object-name> -->
         <object-name>tyre_lD_rim</object-name>
@@ -6775,8 +6789,16 @@
         <!-- <object-name>tyre_l_bush_tri</object-name>
         <object-name>tyre_r_bush_tri</object-name> -->
         <object-name>nose_wheel_strut_tri</object-name>
+        <object-name>nose_wheel_strut_triD</object-name>
         <object-name>nose_wheel_carriage_tri</object-name>
         <object-name>nose_wheel_carriage2_tri</object-name>
+        <object-name>nose_wheel_bush_tri_rim</object-name>
+        <object-name>nose_wheel_bush_triD_rim</object-name>
+
+        <object-name>tyre_r_bush_tri_rim</object-name>
+        <object-name>tyre_l_bush_tri_rim</object-name>
+        <object-name>tyre_r_bush_triD_rim</object-name>
+        <object-name>tyre_l_bush_triD_rim</object-name>
         <object-name>wheel_strut_l_tri</object-name>
         <object-name>wheel_strut_r_tri</object-name>
         <object-name>suspension_tie_tri</object-name>
